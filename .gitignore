@@ -1,0 +1,6 @@
+.pmd
+.classpath
+.project
+.settings/
+/build/
+WebContent/server/

@@ -1,0 +1,27 @@
+<html>
+<title>OAuth Redirect Handler </title>
+<head>
+	<script type="text/javascript" src="../lib/jquery-1.11.0.min.js"></script>
+	<script type="text/javascript" src="../lib/handlebars.js"></script>
+	<script type="text/javascript" src="../lib/RingCentral/ringcentral-bundle.js"></script>
+	<script type="text/javascript" src="../lib/RingCentral/ringcentral-helpers.js"></script>
+	<script type="text/javascript" src="../lib/RingCentral/sip-0.7.7.min.js"></script>
+	<script type="text/javascript" src="../lib/RingCentral/ringcentral-web-phone.js"></script>
+
+
+	<script type="text/javascript" src="https://github.com/ZohoDevelopers/embeddedApp-js-sdk/releases/download/0.2/ZohoEmbededAppSDK.min.js"></script>
+	<script type="text/javascript" src="../js/handler.js"></script>
+	<script type="text/javascript" src="../js/rc.js"></script>
+</head>
+<body>
+<script type="text/javascript">
+    if(document.location.search.length > 0)
+    {
+		var code = document.location.search.replace("?code=","code=");
+		parent.opener.postMessage(code,"https://s3-us-west-2.amazonaws.com");
+
+		window.close();
+	}
+</script>
+</body>
+</html>

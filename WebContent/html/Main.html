@@ -1,0 +1,266 @@
+<html>
+<title>Remote Client</title>
+<head>
+	<script type="text/javascript" src="../lib/jquery-1.11.0.min.js"></script>
+	<script type="text/javascript" src="../lib/handlebars.js"></script>
+	<script type="text/javascript" src="../lib/RingCentral/ringcentral-bundle.js"></script>
+	<script type="text/javascript" src="../lib/RingCentral/ringcentral-helpers.js"></script>
+	<script type="text/javascript" src="../lib/RingCentral/sip-0.7.7.min.js"></script>
+	<script type="text/javascript" src="../lib/RingCentral/ringcentral-web-phone.js"></script>
+
+
+<!-- 		<script type="text/javascript" src="https://localhost:8443/lib/EmbeddedAppInterface.js"></script>-->
+<!-- 		<script type="text/javascript" src="https://localhost:8443/lib/ZohoCrmHelper.js"></script>-->
+	<script type="text/javascript" src="../lib/ZohoEmbededAppSDK.min.js"></script>
+	<script type="text/javascript" src="../js/handler.js"></script>
+	<script type="text/javascript" src="../js/rc.js"></script>
+
+
+	<!-- SDK as per widget Configuration -->
+
+
+
+	<script type="text/javascript">
+		$(document).ready(function()
+		{
+			/*
+			 * initialize widget with config data
+			 */
+				ZOHO.embeddedApp.on("DialerActive",function(){
+					console.log("dialer Active");
+				})
+				ZOHO.embeddedApp.on("Dial",Handler.initiateCall)
+				ZOHO.embeddedApp.on("PageLoad",Handler.entityPageLoad)
+
+			$("#widgetsDiv").on("click", ".toggle-icons", function()
+			{
+				var ele = $(this);
+				if(ele.hasClass("blueTxt"))
+				{
+					ele.removeClass("blueTxt")
+				}
+				else
+				{
+					ele.addClass("blueTxt")
+				}
+			});
+			ZOHO.embeddedApp.init().then(function(){
+				Handler.widgetInit();
+			});
+		});
+	</script>
+</head>
+
+<link rel="stylesheet"  type="text/css" href="../css/style.css" />
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+
+<body class="loadingDiv">
+<div id="logoutMenu" style="display:none;">
+	<ul>
+		<li><i class="logoutIcon"></i><span class="logoutStatus"></span><a class="logoutWdgt" href="javascript:;" onclick="Handler.logOut()">Logout</a></li>
+	</ul>
+</div>
+<div>
+	<div id="loadingDiv" style="display:none">
+		<div class="loadingBG">&nbsp;</div>
+		<div class="loadingText">Loading...</div>
+	</div>
+	<div class="successMsg" style="display:none"></div>
+	<div id="widgetsDiv" class="commonDiv">
+	</div>
+</div>
+<script id='LoginWait' type='text/x-handlebars-template'>
+	<div class="incomeHead">
+		<p class="callTxtTtl" style="">Log In</p>
+		<a class="hideWdgt" href="javascript:;" onclick="Handler.minimizePane()">-</a>
+	</div>
+      <div class="p20">
+		<h3 class="mT30 logginTxt" align="center">Redirecting to Ringcentral Login..</h4>
+		<h4 class="mT30" align="center"><img class="mT30" src="../img/loading.gif"></h4>
+	</div>
+</script>
+<script id='CallInProgress' type='text/x-handlebars-template'>
+	<div class="incomeHead">
+		<p class="callTxtTtl" style="">Call</p>
+		<a class="loginStatus" href="javascript:;" onclick="Handler.showLogStatus()">(...)</a>
+		<a class="hideWdgt" href="javascript:;" onclick="Handler.minimizePane()">-</a>
+	</div>
+      <div class="callerInfo">
+		<div class="topInfocaller">
+		<!--	<img class="callInprogImg fL" src ="../img/caller.jpg"/> -->
+				<h3 class="callerName">{{#if Name}}{{Name}}{{/if}}
+				</h3>
+				<h3 class="callerNo">{{Number}}</h3>
+			<div class="clear"></div>
+        	<div class="timeText" id="callTimer">Connecting</div>
+		</div>
+        <table align="center" class="callActions" border="0" width="100%">
+          <tr>
+
+            <td class="whiteTxt pointer">
+	             <div class="callerOpt"> <i class="ringIcon b-vol-up" onclick="Handler.VolUp()"></i></div>
+					<p class="callerOptTxt">Plus</p>
+            </td>
+
+				<td class="whiteTxt pointer"></td>
+
+            <td class="whiteTxt pointer">
+	              <div class="callerOpt"><i class="ringIcon b-vol-down" onclick="Handler.VolDown()"></i></div>
+					<p class="callerOptTxt">Minus</p>
+            </td>
+
+          </tr>
+          <tr>
+            <td class="whiteTxt pointer">
+    	          <div class="callerOpt toggle-icons" onclick="Handler.HoldUnhold(this)" data-action="hold" data-text-id="holdUnholdTxt"><i class="ringIcon hold"></i></div>
+					<p class="callerOptTxt" id="holdUnholdTxt">Hold</p>
+            </td>
+            <td class="whiteTxt pointer" >
+                <div class="callerOpt toggle-icons"onclick="Handler.MuteUnmute(this)" data-action="mute" data-text-id="muteUnmuteTxt">
+				<i class="ringIcon mute"></i></div>
+				<p class="callerOptTxt" id="muteUnmuteTxt">Mute</p>
+            </td>
+            <td class="whiteTxt pointer">
+	              <div class="callerOpt toggle-icons"  onclick="Handler.StartStopRecord(this)" data-action="start" data-text-id="startStopTxt">
+					<i class="ringIcon record"></i></div>
+					<p class="callerOptTxt" id="startStopTxt">Record</p>
+            </td>
+          </tr>
+          <tr>
+            <td class="whiteTxt pointer"></td>
+            <td class="pR">
+	              <input type="button" class="callredBtn" value="End" onclick="Handler.Hangup('{{dataID}}')" />
+            </td>
+            <td class="whiteTxt pointer"></td>
+          </tr>
+        </table>
+      </div>
+</script>
+
+<script id='IncomingCall' type='text/x-handlebars-template'>
+	<div class="incomeHead">
+		<p class="callTxtTtl">Incoming Call</p>
+		<a class="hideWdgt" href="javascript:;" onclick="Handler.minimizePane()">-</a>
+	</div>
+	<div class="callerInfo">
+       <!-- <img class="callerImg" src ="../img/caller.jpg"/>-->
+        <div>
+          <h3 class="callerName" style="margin-top:30px;">
+            {{#if Name}}
+                {{Name}}
+
+            {{/if}}
+          </h3>
+        </div>
+        <div><h3 class="callerNo" style="margin-top:10px;">{{Number}}</h3></div>
+			<div class="timeText" id="callTimer">Connecting</div>
+			<h3 class="recentTtle">Recent activities</h3>
+	<ul class="listOptions">
+		<li><i class="ringIcon follFigIco" /> <span>Follow up about deal figure</span></li>
+		<li><i class="ringIcon approveIco" /> <span>Get approval on figures</span></li>
+		<li><i class="ringIcon callingIco" /> <span>Called Jeff Moss</span></li>
+	</ul>
+        <div class="responseBtn">
+	        <input class="actionTxt fL" style="width: 138px;" type="button" value="Dismiss" onclick="Handler.Hangup()"/>
+            <input class="actionTxt grnBtn fR" style="width: 138px; margin:0px;" type="button" value="Answer" onclick="Handler.AnswerCall()"/>
+        </div>
+	</div>
+</div>
+</script>
+<script id='Dialer' type='text/x-handlebars-template'>
+	<div id="wrapper">
+        <div class="dialpad compact">
+			<div class="grey-bg">
+				<a class="loginStatus" href="javascript:;" onclick="Handler.showLogStatus(this)">(...)</a>
+				<a class="hideWdgt" href="javascript:;" onclick="Handler.minimizePane()">-</a>
+			</div>
+            <div class="call-info">
+                    <input class="number" id="dialNumber" value="{{Number}}"></input>
+            </div>
+            <div class="dials">
+                  <ol>
+                      <li class="digits" onclick="Handler.enterNumber(this)"><p><label>1</label></p></li>
+                      <li class="digits centerWdgt" onclick="Handler.enterNumber(this)"><label>2</label><p>abc</p></li>
+                      <li class="digits" onclick="Handler.enterNumber(this)"><label>3</label><p>def</p></li>
+                      <li class="digits" onclick="Handler.enterNumber(this)"><label>4</label><p>ghi</p></li>
+                      <li class="digits centerWdgt" onclick="Handler.enterNumber(this)"><label>5</label><p>jkl</p></li>
+                      <li class="digits" onclick="Handler.enterNumber(this)"><label>6</label><p>mno</p></li>
+                      <li class="digits" onclick="Handler.enterNumber(this)"><label>7</label><p>pqrs</p></li>
+                      <li class="digits centerWdgt" onclick="Handler.enterNumber(this)"><label>8</label><p>tuv</p></li>
+                      <li class="digits" onclick="Handler.enterNumber(this)"><label>9</label><p>wxyz</p></li>
+                      <li class="digits" onclick="Handler.enterNumber(this)"><label class="starLabel">*</label></li>
+                      <li class="digits centerWdgt" onclick="Handler.enterNumber(this)"><label>0</label><p>+</p></li>
+                      <li class="digits" onclick="Handler.enterNumber(this)"><label class="hashLabel">#</label></li>
+                      <li class="fL" onclick="Handler.enterNumber(this)"><p class="btnAlign"><strong class="actionTxt"><label style="font-size: 16px;">Clear</lable></strong></p></li>
+					  <li class="fL pad-action" onclick="Handler.DialNumber()"><p class="btnAlign"><strong class="actionTxt grnBtn"><label style="font-size: 16px;color:#fff;">Call</lable></strong></p></li>
+                      <li class="fL" onclick="Handler.enterNumber(this)"><p class="btnAlign"><strong class="actionTxt"><label style="font-size: 16px;">Delete</lable></strong></p></li>
+                  </ol>
+            </div>
+        </div>
+    </div>
+</script>
+<script id='FeedBack' type='text/x-handlebars-template'>
+	<div class="incomeHead">
+		<p class="callTxtTtl" style="">FeedBack</p>
+		<a class="hideWdgt" href="javascript:;" onclick="Handler.minimizePane()">-</a>
+	</div>
+      <div class="callerInfo">
+		<div class="topInfocaller">
+			<!--<img class="callInprogImg fL"" src ="../img/caller.jpg"/>-->
+        	<div class="fL">
+				<h3 class="callerName">
+            	{{#if Name}}
+                	{{Name}}
+
+            	{{/if}}
+				</h3>
+				<h3 class="callerNo">{{Number}}</h3>
+			</div>
+			<div class="clear"></div>
+        	<div class="timeText" id="callTimer" style="display:none;">00:00</div>
+		</div>
+		<div class="pR mT30"><i class="fL approveIco feedbkIco" />
+		<input type="textbox" id="feedbacktopic" name="notesttitle" placeholder="Title" class="fL extInputBox"/></div>
+  		<div><textarea id="calleeFeedBack" placeholder="Notes"></textarea></div>
+  		<div>
+			<input type="button" value="Submit" onclick="Handler.saveNotes('{{dataID}}')" class="callGreenBtn pR" />
+			<input type="button" value="Cancel" onclick="Handler.showDialer()" class="callredBtn pR" style="margin-left: 45px;"/>
+		</div>
+
+</div>
+</div>
+</script>
+<script id='callLog' type='text/x-handlebars-template'>
+	<div class="incomeHead">
+		<p class="callTxtTtl" style="">Log Call</p>
+		<a class="hideWdgt" href="javascript:;" onclick="Handler.minimizePane()">-</a>
+	</div>
+      <div class="p20">
+		<h4 class="callLogName mT10">Jeff Moss</h4>
+		<div class="pR "><input type="textbox" name="extension" placeholder="Sumbject" class="fL subjectInputBox"/></div>
+  		<div><textarea id="calleeFeedBack" placeholder="Comments" style="height: 200px;"></textarea></div>
+  		<div align="center" class="mT30"><input type="button" value="Save" class="callBluebtn pR" /> <input type="button" value="Cancel" class="actionTxt" /></div>
+	</div>
+</div>
+</script>
+<script id='login' type='text/x-handlebars-template'>
+<form>
+	<div class="incomeHead">
+		<p class="callTxtTtl" style="">Log In</p>
+
+		<a class="hideWdgt" href="javascript:;" onclick="Handler.minimizePane()">-</a>
+	</div>
+      <div class="p20">
+		<h4 class="mT30" style=" text-align: center; "><img src="../img/ringcentral.png"></h4>
+		<br>
+		<a href="javascript:;" class="mT30 loginTxtLink" align="center" onclick="Handler.initiateLogin()" id="login" style="">Login to your RingCentral account.</a>
+	</div>
+</div>
+</form>
+</div>
+</form>
+</script>
+<video id="remoteVideo" hidden="hidden"></video>
+<video id="localVideo" hidden="hidden" muted></video>
+</body>
+</html>

@@ -1,0 +1,695 @@
+/* PROXIMA NOVA FONT WEIGHT LIST */
+/*~~~~~~~~~~ REGULAR ~~~~~~~~~~*/
+@font-face {
+    font-family:"proxima_nova_rgregular";
+    src:url("https://fonts.zohostatic.com/proximanova/proximanova_regular_macroman/ProximaNova-Reg-webfont.eot");
+    src:url("https://fonts.zohostatic.com/proximanova/proximanova_regular_macroman/ProximaNova-Reg-webfont.eot?#iefix") format("embedded-opentype"),
+        url("https://fonts.zohostatic.com/proximanova/proximanova_regular_macroman/ProximaNova-Reg-webfont.woff") format("woff"),
+        url("https://fonts.zohostatic.com/proximanova/proximanova_regular_macroman/ProximaNova-Reg-webfont.ttf") format("truetype"),
+        url("https://fonts.zohostatic.com/proximanova/proximanova_regular_macroman/ProximaNova-Reg-webfont.svg#proxima_nova_rgregular") format("svg");
+    font-weight:normal;
+    font-style:normal;
+}
+/*~~~~~~~~~~ LIGHT ~~~~~~~~~~*/
+@font-face {
+    font-family:"proxima_novalight";
+    src:url("https://fonts.zohostatic.com/proximanova/proximanova_light_macroman/ProximaNova-Light-webfont.eot");
+    src:url("https://fonts.zohostatic.com/proximanova/proximanova_light_macroman/ProximaNova-Light-webfont.eot?#iefix") format("embedded-opentype"),
+        url("https://fonts.zohostatic.com/proximanova/proximanova_light_macroman/ProximaNova-Light-webfont.woff") format("woff"),
+        url("https://fonts.zohostatic.com/proximanova/proximanova_light_macroman/ProximaNova-Light-webfont.ttf") format("truetype"),
+        url("https://fonts.zohostatic.com/proximanova/proximanova_light_macroman/ProximaNova-Light-webfont.svg#proxima_novalight") format("svg");
+    font-weight:normal;
+    font-style:normal;
+}
+/*~~~~~~~~~~ SEMIBOLD ~~~~~~~~~~*/
+@font-face {
+    font-family:"proxima_novasemibold";
+    src:url("https://fonts.zohostatic.com/proximanova/proximanova_semibold_macroman/ProximaNova-Sbold-webfont.eot");
+    src:url("https://fonts.zohostatic.com/proximanova/proximanova_semibold_macroman/ProximaNova-Sbold-webfont.eot?#iefix") format("embedded-opentype"),
+        url("https://fonts.zohostatic.com/proximanova/proximanova_semibold_macroman/ProximaNova-Sbold-webfont.woff") format("woff"),
+        url("https://fonts.zohostatic.com/proximanova/proximanova_semibold_macroman/ProximaNova-Sbold-webfont.ttf") format("truetype"),
+        url("https://fonts.zohostatic.com/proximanova/proximanova_semibold_macroman/ProximaNova-Sbold-webfont.svg#proxima_novasemibold") format("svg");
+    font-weight:normal;
+    font-style:normal;
+}
+/*~~~~~~~~~~ BOLD ~~~~~~~~~~*/
+@font-face {
+    font-family: 'proxima_nova_rgbold';
+    src: url('https://fonts.zohostatic.com/proximanova/proximanova_bold_macroman/ProximaNova-Bold-webfont.eot');
+    src: url('https://fonts.zohostatic.com/proximanova/proximanova_bold_macroman/ProximaNova-Bold-webfont.eot?#iefix') format('embedded-opentype'),
+         url('https://fonts.zohostatic.com/proximanova/proximanova_bold_macroman/ProximaNova-Bold-webfont.woff') format('woff'),
+         url('https://fonts.zohostatic.com/proximanova/proximanova_bold_macroman/ProximaNova-Bold-webfont.ttf') format('truetype'),
+         url('https://fonts.zohostatic.com/proximanova/proximanova_bold_macroman/ProximaNova-Bold-webfont.svg#proxima_nova_rgbold') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+body{
+    color: #444;
+    font-family: "proxima_nova_rgregular";
+    font-size: 13px;
+    margin: 0;
+    padding: 0;
+}
+*
+{
+margin: 0;
+    padding: 0;
+}
+p,
+ol,
+ul,
+li{
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font: inherit;
+    font-size: 100%;
+    vertical-align: baseline;
+    list-style-type:none;
+}
+.pR {
+	position:relative !important;
+}
+.p20{
+	padding:20px;
+}
+.clear {
+	clear:both;
+}
+.mT10 {
+	margin-top:10px;
+}
+.w100per {
+	width:100%;
+}
+.dials >*{
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+.dialpad{
+    background-color: white;
+}
+.dialpad .number {
+    position: relative;
+    z-index: 2;
+    color: #4d4d4d;
+    font-weight: 300;
+    font-size: 24px;
+    margin-top: 10px;
+    background: #fff;
+    min-height: 27px;
+    padding-left: 3px;
+    padding-top: 3px;
+    width: 100%;
+    border: none;
+    text-align: center;
+    letter-spacing: 1px;
+}
+.dialpad .dials {
+    width: 235px;
+    margin: 0 auto;
+    margin-top: 20px;
+}
+.centerWdgt {
+	margin:0px 24px;
+}
+.dialpad .dials:before,
+.dialpad .dials:after {
+    content: "\0020";
+    display: block;
+    height: 0;
+    overflow: hidden
+}
+.dialpad .dials:after {
+    clear: both
+}
+.dialpad .dials .digits {
+	border: 1px solid #4c9ae2;
+    border-radius: 30px;
+    box-sizing: border-box;
+    float: left;
+    height: 60px;
+    padding: 10px;
+    width: 60px;
+    text-align: center;
+    margin-bottom: 15px;
+}
+.dialpad .dials .digits p strong {
+    font-size: 50px;
+    margin-right: 8px;
+    color: #fff
+}
+.dialpad .dials .digits:active {
+    background: #4c9ae2;
+}
+.dialpad .dials .digits:active label, .dialpad .dials .digits:active p {
+	color:#fff;
+}
+.compact .dials .digits p strong {
+        font-size: 25px;
+}
+.actionTxt{
+        font-size: 15px !important;
+}
+.compact .dials .digits p sup {
+    text-transform: uppercase;
+    color: #c1c1c1
+}
+.compact .dials :active {
+    background: #0c3
+}
+.call-info
+{
+    padding: 0;
+    text-align: center;
+    width: 300px;
+    margin: 10px auto;
+    margin-top: 30px;
+}
+.f18
+{
+	font-size: 18px;
+}
+.callerInfo{
+    text-align: center;
+    padding: 0 30px;
+}
+.callerImg{
+    width: auto;
+    height: auto;
+    border-radius: 35px;
+    max-width: 70px;
+    max-height: 70px;
+    margin-top: 13px;
+    margin-bottom: 5px;
+}
+.callerName{
+	text-overflow: ellipsis;
+    margin-top: 15px;
+    white-space: nowrap;
+    overflow: hidden;
+    font-size: 20px;
+    color: #000;
+}
+.phNumber {
+    margin-top:15px;
+    font-size: 18px;
+    color: #000;
+    font-family:"proxima_novalight";
+}
+.fR
+{
+	float: right;
+}
+.fL
+{
+	float: left;
+}
+.mL10{
+    margin-left: 10px;
+}
+.mR10{
+    margin-right: 10px;
+}
+.pT35{
+	padding-top:35px
+}
+.mT30 {
+	margin-top:30px;
+}
+.responseBtn
+{
+	margin-top:45px !important;
+}
+@keyframes border-animate
+{
+    0%{ 		-webkit-box-shadow: 0px 0px 10px #a9cefb;	    -moz-box-shadow: 0px 0px 10px #a9cefb;		box-shadow:0px 0px 10px #a9cefb 	}
+    50%{		-webkit-box-shadow: 0px 0px 50px #a9cefb;	    -moz-box-shadow: 0px 0px 50px #a9cefb;		box-shadow:0px 0px 50px #a9cefb 	}
+    100%{		-webkit-box-shadow: 0px 0px 10px #a9cefb;	    -moz-box-shadow: 0px 0px 10px #a9cefb;		box-shadow:0px 0px 10px #a9cefb 	}
+}
+.loadingImg
+{
+	-webkit-user-select: none;
+    margin-left: -83px;
+    margin-top: -44px;
+}
+.loggingInTxt
+{
+	position: absolute;
+	color: #fff;
+    width: 110px;
+    margin-left: -55px;
+    left: 50%;
+    margin-top: 10px;
+}
+ol.actions li{
+  float:left;
+  width:33.33%;
+  margin-top: 10px;
+}
+.callActions{
+  margin-top:8px;
+  border solid 1px white;
+}
+.callActions td{
+  padding:13px;
+  width:33.33%;
+  text-align: center;
+}
+.callerOpt:active{
+	  background-color: #4c9ae2;
+}
+.blueTxt
+{
+      background-color: #4c9ae2;
+}
+.endCallBtn{
+	padding: 10px;
+    border-radius: 50%;
+    background: red;
+}
+.material-icons{
+	cursor: pointer;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+.loadingText{
+	position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 999;
+    color: #fff;
+    width: 80px;
+    margin-left: -40px;
+    height: 20px;
+    margin-top: -10px;
+}
+.loadingBG
+{
+    background: #000;
+    width: 100%;
+    height: 100%;
+    opacity: 0.8;
+    z-index: 999;
+    position: fixed;
+}
+.successMsg{
+     background: #439c28;
+    color: #FFF;
+    width: 20%;
+    padding: 3px 10px 3px 8px;
+    position: fixed;
+    border-radius: 4px;
+    left: 37%;
+}
+.dials label {
+    font-size: 22px;
+    font-family:"proxima_novalight";
+    color:#000;
+}
+label.starLabel, label.hashLabel {
+    font-size: 32px;
+    vertical-align: middle;
+    position: relative;
+    top: 8px;
+}
+label.hashLabel {
+	top: 7px;
+    font-size: 22px;
+}
+.dials .digits p {
+    font-size: 14px;
+    position: relative;
+    top: -4px;
+}
+.actionTxt {
+    font-size: 14px;
+    padding: 8px 12px;
+    border: 1px solid #c4c4c4;
+    background: #fff;
+    border-radius: 2px;
+    color:#000;
+}
+.grnBtn {
+    margin: 0 10px;
+    background: #19bc7d;
+    padding: 8px 24px;
+    border: solid 1px #19bc7d;
+    color: #fff;
+    border-bottom: 1px solid #148157;
+}
+.btnAlign {
+	padding-top: 7px;
+	padding-bottom: 10px;
+	margin-top: 14px;"
+}
+a.hideWdgt {
+	font-size: 19px;
+    float: right;
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    text-align: center;
+    text-decoration: none;
+    width: 10px;
+    height: 10px;
+    text-indent: -9999px;
+    cursor: pointer;
+    border-top: 2px solid #787878;
+}
+
+/******************Incoming Call Settings***********************/
+p.incomTxtTtl {
+    height: 54px;
+    background: #f0f1f3;
+    text-align: center;
+    font-size: 16px;
+    line-height: 60px;
+    border-bottom: 1px solid #ccc;
+}
+h3.recentTtle {
+	text-align: left;
+    font-size: 14px;
+    color: #000;
+    margin-bottom: 8px;
+    margin-top: 28px;
+}
+ul.listOptions {
+    text-align: left;
+}
+.listOptions li {
+    border: 1px solid #c4c4c4;
+    padding: 9px 0 9px 35px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: #000;
+    font-family:"proxima_novasemibold";
+    position: relative;
+}
+.follFigIco, .approveIco, .callingIco
+{
+	background-image: url(../img/ring-icon.png);
+	height:25px;
+	position: absolute;
+    margin-left: -29px;
+    width: 24px;
+    margin-top: -4px;
+}
+.follFigIco
+{
+	background-position: -112px -97px;
+}
+.approveIco
+{
+	    background-position: -109px -61px;
+}
+.callingIco
+{
+	background-position: -113px -20px;
+}
+.w-vol-up, .w-vol-down, .b-vol-up, .b-vol-down, .mute, .unmute, .hold, .unhold, .record, .offrecord
+{
+	background-image: url(../img/ring-icon.png);
+	width:24px;
+	height:24px;
+	float:left;
+	    margin-left: 17px;
+    margin-top: 17px;
+	/*background-color:red;*/
+}
+.w-vol-up
+{
+	background-position:-40px 4px;
+}
+.w-vol-down
+{
+	background-position:-40px -23px;
+}
+.b-vol-up
+{
+	background-position:0px 4px;
+
+}
+.b-vol-down
+{
+	background-position:1px -22px;
+
+}
+.mute
+{
+	background-position:3px -54px;
+}
+.unmute
+{
+	background-position:-27px -54px;
+}
+.hold
+{
+	background-position:5px -86px;
+}
+.unhold
+{
+	background-position:-25px -86px;
+}
+.record
+{
+	background-position:-23px -116px;
+
+}
+.offrecord
+{
+	background-position:3px -116px;
+}
+
+/***********************Callinprogress*************************/
+.callTxtTtl {
+    height: 54px;
+    background: #f0f1f3;
+    text-align: left;
+    font-size: 18px;
+    line-height: 60px;
+    border-bottom: 1px solid #ccc;
+    font-family: "proxima_novasemibold";
+    padding-left: 32px;
+}
+h3.callerNo {
+   /* margin: 0px;
+    margin-left: 15px;*/
+    margin-top: 5px;
+    font-size:18px;
+
+}
+
+div#callTimer {
+    font-size: 16px;
+    margin-top: 18px;
+}
+.callInprogImg{
+	width: auto;
+    height: auto;
+    border-radius: 25px;
+    max-width: 50px;
+    max-height: 50px;
+    margin-top: 13px;
+    margin-bottom: 5px;
+    margin-left: 24px;
+}
+.callerOpt {
+    position: relative;
+    width: 60px;
+    height: 60px;
+    border: 1px solid #4c9ae2;
+    border-radius: 30px;
+    box-sizing: border-box;
+    margin-left:5px;
+}
+input.callredBtn {
+	background-color: #f24837;
+    border: 1px solid #ea3827;
+    padding: 8px 28px;
+    border-radius: 2px;
+    color: #fff;
+    font-size: 14px;
+    position: absolute;
+    left: 0;
+    margin-top:15px;
+}
+
+input.callGreenBtn {
+	background-color: #19bc7d;
+    border: 1px solid rgb(22, 167, 111);
+    padding: 8px 28px;
+    border-radius: 2px;
+    color: #fff;
+    font-size: 14px;
+    position: absolute;
+    left: 0;
+    margin-top:15px;
+}
+
+p.callerOptTxt {
+    font-size: 14px;
+    color: #000;
+    margin-top: 2px;
+}
+
+
+/*************Call Notes*******************/
+i.ringIcon.entExt {
+    background-position: -102px -50px;
+	border: 1px solid #c4c4c4;
+    margin-right: -1px;
+    display: block;
+    padding: 5px;
+    width: 18px;
+    height: 20px;
+    left:0px;
+}
+input.fL.extInputBox {
+    padding: 6px;
+    width: 255px;
+    margin-left: 32px;
+    font-size: 14px;
+    font-family: "proxima_novalight";
+    height: 32px;
+}
+#calleeFeedBack {
+    margin-top: 17px;
+    height: 150px;
+    width: 100%;
+    border:1px solid #c4c4c4;
+    font-size: 14px;
+    font-family: "proxima_novalight";
+    padding: 5px;
+    padding-left: 7px;
+}
+.subjectInputBox, .inputBox {
+    padding: 10px;
+    border: 1px solid #c4c4c4;
+    font-size: 15px;
+    width: 100%;
+    margin-bottom: 3px;
+    font-family: "proxima_novalight";
+}
+.inputBox {
+    margin-bottom: 20px;
+}
+.callLogName {
+    color: #000;
+    font-size: 20px;
+    font-family: "proxima_novalight";
+    margin: 0;
+    margin-bottom: 20px;
+}
+input.callBluebtn {
+    background: #42a2eb;
+    border: 1px solid #2991e0;
+    border-radius: 2px;
+    padding: 8px 20px;
+    color: #fff;
+    font-size: 14px;
+    margin-right:5px;
+}
+.logginTxt {
+    font-size: 20px;
+    color: #000;
+    font-family: "proxima_novalight";
+}
+.feedbkIco{
+    border: 1px solid #c4c4c4;
+    padding: 2px;
+    left: 29px;
+    top: 4px;
+    background-position: -108px -59px;
+    height: 26px;
+}
+.loginTxtLink {
+	font-size: 18px;
+    text-decoration: none;
+    text-align: center;
+    color: #2c7bd0;
+    display: block;
+    cursor: pointer;
+}
+div#logoutMenu {
+    position: absolute;
+    width: 100%;
+    border: 1px solid #ccc;
+    z-index: 20;
+    background: #fff;
+}
+#logoutMenu li {
+    line-height: 16px;
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+}
+#logoutMenu li:last-child {
+    border-bottom: 0px;
+}
+a.loginStatus {
+    position: absolute;
+    right: 40px;
+    top: 7px;
+    background-image: url(../img/ring-icon.png);
+    background-position: -75px -118px;
+    text-indent: -9999;
+    width: 20px;
+    height: 20px;
+}
+i.logoutIcon{
+    background-image: url(../img/ring-icon.png);
+    height: 25px;
+    width: 25px;
+    background-position: -83px -149px;
+    position: absolute;
+}
+a.loginStatus.active {
+    background-position: -75px -87px;
+}
+a.logoutWdgt {
+    /* font-size: 19px; */
+    /* float: right; */
+    text-align: center;
+    text-decoration: none;
+    width: 10px;
+    height: 10px;
+    cursor: pointer;
+    margin-left: 25px;
+    margin-top: -20px;
+    color: #444;
+}
+button.offlineBtn {
+    background-color: grey;
+    width: 10px;
+    height: 10px;
+    border: none;
+    border-radius: 50%;
+    margin-right: 10px;
+    cursor: pointer;
+}
+button.onlineBtn {
+    background-color: green;
+    width: 10px;
+    height: 10px;
+    border: none;
+    border-radius: 50%;
+    margin-right: 10px;
+    cursor: pointer;
+
+}
+.grey-bg{
+    top: 0px;
+    background-color: #f0f1f3;
+    height: 35px;
+    position: relative;
+    z-index: 99;
+}
+#logoutMenu li:last-child{
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
